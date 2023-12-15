@@ -8,17 +8,20 @@ const obj = {
 document.getElementById('Kolya').innerHTML = 'Заробітня плата Колі: ' + obj.Коля;
 document.getElementById('Petya').innerHTML = 'Заробітня плата Петі: ' + obj.Петя;       
 // 2.Якщо змінна a більше нуля - то в ggg запишемо функцію, яка виводить один!, інакше запишемо функцію, яка виводить два!
+
+const a = prompt('Задайте число від 0 до ...');
 const one = () => 1;
 const two = () => 2;
-const a = prompt('Задайте число від 0 до ...');
-const ggg = a > 0 ? 'Спрацювала функція "one", рез-т: ' + one() : 'спрацювала функція "two", рез-т: ' + two();
-document.write(ggg);
+function ggg (one,two){
+  return a > 0 ? 'Спрацювала функція "one", рез-т: ' + one() : 'спрацювала функція "two", рез-т: ' + two();
+}
+document.write(ggg(one,two));
 document.write('<br>');
 // 3.Функція ggg приймає 2 параметри: анонімну функцію, яка повертає 3 та анонімну функцію, яка повертає 4. Поверніть результатом функції ggg суму 3 та 4.
-const gg1 = (f1,f2) => result = f1 + f2;
+const gg1 = (f1,f2) => result = f1() + f2();
 const fn1 = () => 3;
 const fn2 = () => 4;
-document.write('Рез-т функції gg1: ' + gg1(fn1(), fn2()));
+document.write('Рез-т функції gg1: ' + gg1(fn1, fn2));
 document.write('<br>');
 // 4.Напишіть функцію isEmpty(obj), яка повертає true, якщо об'єкт не має властивостей, інакше false.
 const obj1 = {
@@ -67,21 +70,22 @@ tbody.style = "text-align:center; background-color: lightgreen";
 
 for(let i = 0; i < dataOfCurrency.exchangeRate.length; i++) {
   const tr = document.createElement("tr");
-  tr.style = "border: 1px solid black";
   const currencyName = document.createElement("td");
   const saleRateNB = document.createElement("td");
   const purchaseRateNB = document.createElement("td");
 
   const curencyInfo = dataOfCurrency.exchangeRate[i];
 
+  tr.style = "border: 1px solid black";
+
   currencyName.innerHTML += curencyInfo.currency;
   saleRateNB.innerHTML += curencyInfo.saleRateNB.toFixed(2);
   purchaseRateNB.innerHTML += curencyInfo.purchaseRateNB.toFixed(2);
 
-  tbody.appendChild(tr);
-  tr.appendChild(currencyName);
-  tr.appendChild(saleRateNB);
-  tr.appendChild(purchaseRateNB);
+  tbody.append(tr);
+  tr.append(currencyName);
+  tr.append(saleRateNB);
+  tr.append(purchaseRateNB);
 
 }
 
